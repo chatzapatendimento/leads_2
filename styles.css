@@ -1,0 +1,206 @@
+/* Estilo Base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Chat Call Container */
+#chat-call {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 360px;
+    z-index: 99999; /* Máximo z-index para garantir sobreposição */
+    cursor: pointer;
+}
+
+/* Chat Bubble */
+.chat-bubble {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 8px 12px; /* Redução do padding */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    max-width: 220px; /* Redução adicional da largura máxima */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    z-index: 99998; /* Um nível abaixo do container */
+}
+
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #fff;
+    transform: translateY(-50%);
+}
+
+/* Botão de Fechar Bolha */
+.chat-bubble {
+    position: relative; /* Adiciona contexto para posicionamento absoluto */
+}
+
+.chat-close-btn {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background-color: #B30400;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 99999; /* Máximo z-index para garantir sobreposição */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    opacity: 1; /* Sempre visível */
+    transform: scale(1); /* Garantir que esteja visível */
+}
+
+.chat-close-btn:hover {
+    transform: scale(1.1);
+    background-color: #ff0000;
+}
+
+/* Typing Dots Animation */
+.typing-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    background-color: #B30400;
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* Profile Container */
+.profile-container {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://s3.typebot.io/public/workspaces/cm1phfshl003t3eii8w05yvqa/typebots/cm2uxrjgl000114hkqz5xo2ta/blocks/phehu4kfk6fvxk7f0qr2h17y?v=1734639126382');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Online Status Indicator */
+.profile-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Profile Picture */
+.profile-pic {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Fade In Animations */
+@keyframes fadeInAvatar {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInBubble {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Media Queries para Responsividade */
+@media screen and (max-width: 768px) {
+    #chat-call {
+        bottom: 10px;
+        right: 10px;
+        max-width: 300px;
+    }
+
+    .chat-bubble {
+        max-width: 200px;
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .chat-close-btn {
+        width: 25px;
+        height: 25px;
+        top: -10px;
+        left: -10px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #chat-call {
+        bottom: 5px;
+        right: 5px;
+        max-width: 250px;
+    }
+
+    .chat-bubble {
+        max-width: 180px;
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .chat-close-btn {
+        width: 20px;
+        height: 20px;
+        top: -8px;
+        left: -8px;
+        font-size: 16px;
+    }
+}

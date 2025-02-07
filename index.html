@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0.3/dist/web.js';
+        window.Typebot = Typebot; // Disponibiliza o Typebot globalmente
+    </script>
+</head>
+<body>
+    <!-- Chat de Chamada -->
+    <div id="chat-call" class="chat-container">
+        <!-- Bolha de Mensagem -->
+        <div class="chat-bubble">
+            <span class="chat-close-btn">&times;</span>
+            <div class="typing-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        
+        <!-- Avatar no lado direito -->
+        <div class="profile-container">
+            <img src="https://s3.typebot.io/public/workspaces/cm1phfshl003t3eii8w05yvqa/typebots/cm2uxrjgl000114hkqz5xo2ta/blocks/phehu4kfk6fvxk7f0qr2h17y?v=1734639126382" 
+                 alt="Foto do Perfil" class="profile-pic">
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatCall = document.getElementById('chat-call');
+        const chatBubble = chatCall.querySelector('.chat-bubble');
+        const avatar = chatCall.querySelector('.profile-container');
+
+        // Garantir visibilidade inicial
+        chatCall.style.display = 'flex';
+        avatar.style.display = 'flex';
+        chatBubble.style.display = 'flex';
+
+        // Sequência de animação da bolha de chat
+        const animateChatBubble = () => {
+            // Etapa 1: Animação de digitação
+            chatBubble.innerHTML = `
+                <span class="chat-close-btn">&times;</span>
+                <div class="typing-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            `;
+
+            // Etapa 2: Mensagem após 3 segundos
+            setTimeout(() => {
+                chatBubble.innerHTML = `
+                    <span class="chat-close-btn">&times;</span>
+                    <p>
+                        Quer <strong>Começar</strong> seu <strong>Teste Grátis</strong> da Plataforma? 
+                        <span class="emoji">😄</span>
+                    </p>
+                `;
+            }, 3000);
+        };
+
+        // Iniciar animação
+        animateChatBubble();
+    });
+    </script>
+    <script src="scripts.js"></script>
+</body>
+</html>
