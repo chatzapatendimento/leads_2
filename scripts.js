@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             closeChatCall();
 
             Typebot.initBubble({
-                typebot: "my-typebot-2usgp7j",
+                typebot: "teste-novo-z46satf",
                 theme: {
                     button: {
                         backgroundColor: "#B30400",
